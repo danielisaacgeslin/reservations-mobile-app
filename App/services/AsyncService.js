@@ -1,4 +1,4 @@
-const API = 'http://www.danielgeslin.com/api/?route=';
+const API = 'http://danielgeslin.com/api/?route=';
 
 export function fetchMovies(){
   return fetch('http://danielgeslin.com/movies.json')
