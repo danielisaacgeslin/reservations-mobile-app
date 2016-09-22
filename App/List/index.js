@@ -27,7 +27,8 @@ export default class App extends Component {
 
   render() {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    const dataSource = ds.cloneWithRows(this.state.reservations);
+    const dataSource = ds.cloneWithRows( (this.state.reservations.length ? this.state.reservations : [{invalid:true}]));
+
     const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
     const options = months.map((name, index) =>{

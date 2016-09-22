@@ -42,3 +42,25 @@ export function getReservationList(month, year){
     console.error(error);
   });
 }
+
+export function getReservationTagList(reservationId){
+  return fetch(API.concat('getReservationTagList&reservation_id=').concat(reservationId))
+  .then((response) => response.json())
+  .then((responseJson) => {
+    return responseJson;
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+}
+
+export function getComments(reservationId){
+  return fetch(API.concat('getComments&reservation_id=').concat(reservationId))
+  .then((response) => response.json())
+  .then((responseJson) => {
+    return responseJson;
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+}

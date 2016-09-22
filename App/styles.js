@@ -1,13 +1,31 @@
 import { StyleSheet } from 'react-native';
 
 export default function getStyles(){
-  const primary = '#d9230f';
-  const lightGray = '#E4E4E4';
+  const primaryColor = '#d9230f';
+  const defaultColor = '#474949';
+  const lightGrayColor = '#E4E4E4';
   return StyleSheet.create({
+    mainView: {
+      flex:1,
+      backgroundColor: '#F4F4F4'
+    },
     view: {
       flex: 1,
-      backgroundColor: '#F4F4F4',
-      padding: 15
+      padding: 15,
+      backgroundColor: '#F4F4F4'
+    },
+    tag: {
+      padding:5,
+      height: 30,
+      marginRight:5,
+      backgroundColor: defaultColor,
+      color: '#FFF'
+    },
+    actionBar: {
+      backgroundColor: primaryColor,
+      color: '#FFF',
+      padding: 15,
+      fontSize: 16
     },
     textCenter: {
       textAlign: 'center'
@@ -28,7 +46,7 @@ export default function getStyles(){
       fontSize: 18
     },
     login: {
-      backgroundColor: primary,
+      backgroundColor: primaryColor,
       color: '#FFF',
       padding: 15,
       textAlign: 'center',
@@ -38,7 +56,7 @@ export default function getStyles(){
       opacity: 0.5
     },
     tile: {
-      backgroundColor: lightGray,
+      backgroundColor: lightGrayColor,
       marginBottom: 3,
       padding: 10
     },

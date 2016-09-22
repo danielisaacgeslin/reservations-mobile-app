@@ -10,19 +10,27 @@ export default class Tile extends Component {
     super(props);
   }
 
+  goToDetail(){
+    this.props.navigator.push({id:'detail', data:this.props.data});
+  }
+
   render() {
     const data = this.props.data;
-    const date = filterService.date(data.DATE);
-    const time = filterService.time(data.TIME);
-    const department = filterService.department(data.DEPARTMENT);
+    const date = data.DATE && filterService.date(data.DATE);
+    const time = data.TIME && filterService.time(data.TIME);
+    const department = data.DEPARTMENT && filterService.department(data.DEPARTMENT);
 
-    return (
-      <TouchableHighlight style={styles.tile}>
+    const tile = (
+      <TouchableHighlight onPress={this.goToDetail.bind(this)} style={styles.tile}>
         <View>
           <Text style={styles.tileTitle}>{date} - {time}</Text>
           <Text style={styles.tileSubtitle}>{data.FLOOR}° {department} - {data.FIRST_NAME} {data.LAST_NAME}</Text>
         </View>
       </TouchableHighlight>
     );
+
+    const invalid = (<Text style={styles.statusText}>No data available</Text>);
+
+    return (data.invalid ? invalid : tile);
   }
 }
