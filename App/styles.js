@@ -22,10 +22,21 @@ export default function getStyles(){
       color: '#FFF'
     },
     actionBar: {
-      backgroundColor: primaryColor,
-      color: '#FFF',
+      flex:1,
+      flexDirection: 'row',
       padding: 15,
+      backgroundColor: primaryColor
+    },
+    actionBarTitle: {
+      flex:3,
+      color: '#FFF',
       fontSize: 16
+    },
+    actionBarButton: {
+      flex:1,
+      color: '#FFF',
+      fontSize: 16,
+      textAlign: 'right'
     },
     textCenter: {
       textAlign: 'center'
