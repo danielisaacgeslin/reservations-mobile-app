@@ -2,11 +2,15 @@ import { StyleSheet } from 'react-native';
 
 export default function getStyles(){
   const primary = '#d9230f';
+  const lightGray = '#E4E4E4';
   return StyleSheet.create({
     view: {
       flex: 1,
       backgroundColor: '#F4F4F4',
       padding: 15
+    },
+    textCenter: {
+      textAlign: 'center'
     },
     centerView: {
       flex: 1,
@@ -33,8 +37,16 @@ export default function getStyles(){
     loading: {
       opacity: 0.5
     },
+    tile: {
+      backgroundColor: lightGray,
+      marginBottom: 3,
+      padding: 10
+    },
     tileTitle: {
-      fontSize: 20
+      fontSize: 17
+    },
+    tileSubtitle: {
+      fontSize:14
     }
   });
 }

@@ -14,12 +14,15 @@ export default class Tile extends Component {
     const data = this.props.data;
     const date = filterService.date(data.DATE);
     const time = filterService.time(data.TIME);
+    const department = filterService.department(data.DEPARTMENT);
+
     return (
-      <View>
-        <TouchableHighlight>
+      <TouchableHighlight style={styles.tile}>
+        <View>
           <Text style={styles.tileTitle}>{date} - {time}</Text>
-        </TouchableHighlight>
-      </View>
+          <Text style={styles.tileSubtitle}>{data.FLOOR}° {department} - {data.FIRST_NAME} {data.LAST_NAME}</Text>
+        </View>
+      </TouchableHighlight>
     );
   }
 }
