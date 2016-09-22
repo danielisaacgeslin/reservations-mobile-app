@@ -1,4 +1,4 @@
-package com.testapp;
+package com.reservations;
 
 import android.app.Application;
 import android.util.Log;

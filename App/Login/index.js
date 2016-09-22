@@ -11,7 +11,8 @@ export default class Tile extends Component {
     this.state = {
       username: null,
       password: null,
-      status: null
+      status: null,
+      loading: false
     }
   }
 
@@ -24,15 +25,28 @@ export default class Tile extends Component {
   }
 
   login(){
+    if(this.state.loading){
+      return false;
+    }
+    Object.assign({}, this.state, {loading:true});
     const username = this.state.username;
     const password = this.state.password;
+    const loading = false;
     login(username, password).then((data)=>{
       const status = data.payload;
-      this.setState(Object.assign({}, this.state, {status}));
+      this.setState(Object.assign({}, this.state, {status, loading}));
+      if(data.status === 'OK' || data.payload === 'session is already active'){
+        this.props.navigator.push({id: 'list'});
+        return false;
+      }
     });
   }
 
   render() {
+    const login = [styles.login];
+    if(this.state.loading){
+      login.push(style.loading);
+    }
     return (
       <View style={styles.view}>
         <View style={styles.centerView}>
@@ -40,7 +54,7 @@ export default class Tile extends Component {
           <TextInput onChangeText={this.setUsername.bind(this)} placeholder={'username'} />
           <TextInput onChangeText={this.setPassword.bind(this)} placeholder={'password'} secureTextEntry={true} />
           <TouchableHighlight onPress={this.login.bind(this)}>
-            <Text style={styles.login}>Login</Text>
+            <Text style={login}>Login</Text>
           </TouchableHighlight>
           <Text style={styles.statusText}>{this.state.status}</Text>
         </View>
